@@ -21,8 +21,11 @@ class persona extends Model
         'religion',
         'telefono',
         'legajo',
+        'uuid',
         'email',
         'password'
 
     ];
+
+
 }

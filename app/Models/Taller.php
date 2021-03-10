@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Taller extends Model
 {
-    use HasFactory;
+    //use HasFactory;
+
+    protected $fillable=[
+
+        'nombre_taller',
+        'año_cursado',
+        'año_lectivo'
+
+
+    ];
 }

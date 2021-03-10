@@ -14,7 +14,9 @@ class TallerController extends Controller
      */
     public function index()
     {
-        //
+
+        $talleres=Taller::all();
+        return view('talleres.index', compact('talleres'));
     }
 
     /**
@@ -25,6 +27,7 @@ class TallerController extends Controller
     public function create()
     {
         //
+        return view('talleres.create');
     }
 
     /**
@@ -36,6 +39,26 @@ class TallerController extends Controller
     public function store(Request $request)
     {
         //
+        //return $request;
+
+        $data=$request->validate([
+
+            'nombre_taller'=>'required|max:50',
+            'año_cursado'=>'required',
+            'año_lectivo'=>'required',
+
+
+        ]);
+
+
+        $taller= Taller::create([
+
+            'nombre_taller'=>$data['nombre_taller'],
+            'año_cursado'=>$data['año_cursado'],
+            'año_lectivo'=>$data['año_lectivo']
+        ]);
+
+        return back()->with('estado', 'La informacion del taller ha sido almacenada correctamente');
     }
 
     /**

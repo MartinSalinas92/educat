@@ -24,8 +24,10 @@ class Personas extends Migration
             $table->string('direccion');
             $table->string('religion');
             $table->string('telefono');
+
             $table->bigInteger('legajo');
-            $table->string('email')->unique();
+            $table->uuid('uuid');
+            $table->string('email');
             $table->string('password');
             $table->timestamps();
         });

@@ -6,7 +6,9 @@ use App\Models\docente;
 use App\Models\persona;
 use Illuminate\Http\Request;
 use App\Models\Especializacion;
+use App\Models\Imagen;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class DocenteController extends Controller
 {
@@ -53,7 +55,8 @@ class DocenteController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
+
+
 
         $date=$request->validate([
 
@@ -67,6 +70,7 @@ class DocenteController extends Controller
             'religion'=>'required',
             'telefono'=>'required',
             'legajo'=>'required',
+            'uuid'=>'required|uuid',
             'email'=>'required',
             'password'=>'required',
             'especializacion'=>'required'
@@ -86,6 +90,7 @@ class DocenteController extends Controller
             'religion'=>$date['religion'],
             'telefono'=>$date['telefono'],
             'legajo'=>$date['legajo'],
+            'uuid'=>$date['uuid'],
             'email'=>$date['email'],
             'password'=>bcrypt($date['password']),
 
@@ -109,9 +114,11 @@ class DocenteController extends Controller
      * @param  \App\Models\docente  $docente
      * @return \Illuminate\Http\Response
      */
-    public function show(docente $docente)
+    public function show(docente $docente, persona $persona)
     {
         //
+
+
     }
 
     /**
@@ -123,11 +130,24 @@ class DocenteController extends Controller
     public function edit(docente $docente)
     {
         //
-        $personas=persona::all();
+
+        $docentes=docente::findOrFail($docente->id);
+        $personas=persona::where('id', $docente->personas_id)->get();
+        foreach ($personas as  $persona) {
+
+            $imagen=Imagen::where('id_persona', '=', $persona->uuid)->get();
+
+
+            //return $imagen;
+        }
+
+
+
+
         $especialidad=Especializacion::all();
 
 
-        return view('docentes.edit', compact('especialidad','personas','docente' ));
+        return view('docentes.edit', compact('especialidad','personas','docentes', 'imagen' ));
     }
 
     /**
@@ -211,5 +231,21 @@ class DocenteController extends Controller
         $docente->delete();
         return response()->json(['mensaje'=> 'se ha eliminado el docente'.$docente->name]);
 
+    }
+
+    public function imagen(Request $request){
+
+
+        //me guarda en la carpeta storage
+
+         $ruta_imagen=$request->file('file')->store('docentes', 'public');
+
+        //rezise a la imagen
+        $imagen=Image::make(public_path("storage/$ruta_imagen"))->fit(800,450);
+
+        $imagen->save();
+
+
+        return response()->json($request);
     }
 }

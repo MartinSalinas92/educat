@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class NivelAcademico extends Migration
+class CreateImagensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class NivelAcademico extends Migration
      */
     public function up()
     {
-        Schema::create('nivel_academicos', function (Blueprint $table) {
+        Schema::create('imagens', function (Blueprint $table) {
             $table->id();
-            $table->string('nivel');
+            $table->uuid('id_persona');
+            $table->string('ruta_imagen');
             $table->timestamps();
         });
     }
@@ -27,7 +28,6 @@ class NivelAcademico extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('nivel_academicos');
+        Schema::dropIfExists('imagens');
     }
 }

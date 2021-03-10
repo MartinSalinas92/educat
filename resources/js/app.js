@@ -13,8 +13,9 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 
+
 window.Vue = require('vue').default;
-import router from './router';
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,10 +31,9 @@ import router from './router';
 Vue.use(VueSweetalert2);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('inicioplantilla', require('./components/InicioComponent.vue').default);
-Vue.component('eliminar', require('./components/EliminarComponent.vue').default);
-Vue.component('sexo', require('./components/SexoComponent.vue').default);
 
+Vue.component('eliminar', require('./components/EliminarComponent.vue').default);
+Vue.component('eliminaralumno', require('./components/EliminarAlumno.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -42,5 +42,8 @@ Vue.component('sexo', require('./components/SexoComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
-    router
+
 });
+
+
+require('./dropzone');

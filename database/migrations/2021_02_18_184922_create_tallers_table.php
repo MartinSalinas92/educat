@@ -16,7 +16,7 @@ class CreateTallersTable extends Migration
         Schema::create('tallers', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_taller');
-            $table->bigInteger('año_cursado');
+            $table->string('año_cursado');
             $table->bigInteger('año_lectivo');
 
 

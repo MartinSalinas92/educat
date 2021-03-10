@@ -1,14 +1,36 @@
 <template>
+<div>
+     <button
 
-    <input
+     class="btn btn-danger"
 
-        type="submit"
-        class="btn btn-danger"
-        value="Eliminar"
-        @click="eliminarDocente"
+     @click="eliminarDocente"
+
+     >
+
+    <i class="fas fa-times-circle"></i>
 
 
-    />
+
+
+     </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
 
 </template>
 
@@ -57,6 +79,8 @@ export default {
 
                             )
 
+                            this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
+
                     })
                     .catch(error=>{
                             console.log(error);
@@ -72,3 +96,8 @@ export default {
 
 }
 </script>
+
+<style scoped>
+    @import 'https://use.fontawesome.com/releases/v5.8.1/css/all.css';
+</style>
+

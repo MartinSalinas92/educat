@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Imagen;
+use App\Models\persona;
 use Illuminate\Http\Request;
 
 class InicioController extends Controller
@@ -13,9 +15,13 @@ class InicioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request)
-    {
-        //
 
+
+    {
+
+
+
+        //return $imagenes;
         return view('inicio.index');
     }
 }

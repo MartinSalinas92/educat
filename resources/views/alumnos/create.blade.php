@@ -1,30 +1,27 @@
 @extends('layouts.app')
 
+@section('botones')
+<a href="{{route('alumnos.index')}}" class="btn btn-primary"><i class="fas fa-backward"></i>Volver atras</a>
+
+@endsection
+
+
 @section('style')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.css" integrity="sha256-NkyhTCRnLQ7iMv7F3TQWjVq25kLnjhbKEVPqGJBcCUg=" crossorigin="anonymous" />
 @endsection
 
-@section('botones')
-
-    <a href="{{route('docentes.index')}}" class="btn btn-primary"><i class="fas fa-backward"></i>Volver atras</a>
-
-@endsection
-
-
 @section('content')
 
-    <h1 class="text-center">Crear Docentes</h1>
+    <h1 class="text-center"> Crear Alumnos</h1>
+<div class="row justify-content-center mt-5">
 
-    <div class="row justify-content-center mt-5">
+    <form method="POST" action="{{route('alumnos.store')}}" enctype = "multipart/form-data">
+
+        @csrf
 
 
-
-        <form method="POST" action="{{route('docentes.store')}}">
-
-            @csrf
-
-                <legend class="text-primary" > Datos personales</legend>
+        <legend class="text-primary" > Datos personales</legend>
                     <div class="form-group">
                         <label for="name"> Nombre</label>
 
@@ -297,26 +294,26 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="especializacion">Especialidad</label>
+                            <label for="nivel_academico">Nivel Academico</label>
 
                             <select
-                            name="especializacion"
-                            class="form-control @error('especialidad') is-invalid @enderror"
-                            id="especializacion"
+                            name="nivel"
+                            class="form-control @error('nivel') is-invalid @enderror"
+                            id="nivel"
 
                             >
 
                             <option disabled selected> Seleccionar</option>
 
-                            @foreach ($especializacion as $item)
+                            @foreach ($nivel as $item)
 
                                <option
                                 value="{{$item->id}}"
-                                {{old('especialidad')== $item->id ? 'selected' : ''}}
+                                {{old('nivel')== $item->id ? 'selected' : ''}}
 
                                 >
 
-                                {{$item->nombre_especializacion}}
+                                {{$item->nivel}}
 
                                 </option>
 
@@ -358,13 +355,12 @@
 
 
 
+    </form>
 
 
 
-        </form>
 
-
-    </div>
+   </div>
 
 @endsection
 

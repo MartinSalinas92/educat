@@ -2,8 +2,8 @@
 
 @section('botones')
 
-    <a href="{{route('inicio')}}" class="btn btn-info"> Volver a inicio</a>
-    <a href="{{route('docentes.create')}}" class="btn btn-info"> Agregar Docentes</a>
+    <a href="{{route('inicio')}}" class="btn btn-info"><i class="fas fa-backward"></i> Volver a inicio</a>
+    <a href="{{route('docentes.create')}}" class="btn btn-info"><i class="fa fa-user-plus"></i> Agregar Docentes</a>
 
 
 @endsection
@@ -38,7 +38,8 @@
                             <td>{{$item->especializacion->nombre_especializacion}}</td>
 
                             <td>
-                                <a href="{{route('docentes.edit', $item->id)}}" class="btn btn-warning"> Editar</a>
+                                <div class="btn btn-group">
+                                <a href="{{route('docentes.edit', $item->id)}}" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
                                 <eliminar
 
                                     :eliminardocente={{$item->id}}
@@ -47,7 +48,8 @@
 
                                 </eliminar>
 
-                                <a href="" class="btn btn-success"> Ver</a>
+                                <a href="" class="btn btn-success"><i class="far fa-eye"></i></a>
+                            </div>
                             </td>
                         </tr>
 
