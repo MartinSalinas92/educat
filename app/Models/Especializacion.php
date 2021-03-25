@@ -9,5 +9,9 @@ class Especializacion extends Model
 {
     //use HasFactory;
 
+    protected $fillable=[
 
+        'nombre_especializacion'
+
+    ];
 }

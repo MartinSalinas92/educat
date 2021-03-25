@@ -79,7 +79,8 @@ export default {
 
                             )
 
-                            this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
+                           this.$el.parentNode.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode.parentNode);
+
 
                     })
                     .catch(error=>{

@@ -341,7 +341,7 @@
                         <div class="form-group">
                             <input type="submit"
                             class="btn btn-primary btn-block"
-                            value="Guardar Docente" />
+                            value="Guardar Alumnos" />
 
                         </div>
 

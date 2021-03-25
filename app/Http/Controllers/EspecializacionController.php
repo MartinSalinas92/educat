@@ -15,6 +15,10 @@ class EspecializacionController extends Controller
     public function index()
     {
         //
+
+        $especializaciones= Especializacion::all();
+
+        return view('especificaciones.index', compact('especializaciones'));
     }
 
     /**
@@ -25,6 +29,8 @@ class EspecializacionController extends Controller
     public function create()
     {
         //
+
+        return view('especificaciones.create');
     }
 
     /**
@@ -36,6 +42,19 @@ class EspecializacionController extends Controller
     public function store(Request $request)
     {
         //
+
+        $data=$request->validate([
+            'nombre_especialidad'=>'required'
+        ]);
+
+        $especialidad=Especializacion::create([
+            'nombre_especializacion'=>$data['nombre_especialidad']
+
+        ]);
+
+        return back()->with('estado', 'la especialidad se ha guardado correctamente');
+
+
     }
 
     /**
@@ -58,6 +77,7 @@ class EspecializacionController extends Controller
     public function edit(Especializacion $especializacion)
     {
         //
+        return view('especificaciones.edit', compact('especializacion'));
     }
 
     /**
@@ -67,9 +87,21 @@ class EspecializacionController extends Controller
      * @param  \App\Models\Especializacion  $especializacion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Especializacion $especializacion)
+    public function update(Request $request, Especializacion $especializacion, $id)
     {
         //
+
+
+        $data=$request->validate([
+            'nombre_especialidad'=>'required'
+        ]);
+
+        $especialidad= Especializacion::find($id);
+        $especialidad->nombre_especializacion=$data['nombre_especialidad'];
+        $especialidad->save();
+
+        return back()->with('estado', 'se ha modificado la especializacion');
+
     }
 
     /**
@@ -81,5 +113,8 @@ class EspecializacionController extends Controller
     public function destroy(Especializacion $especializacion)
     {
         //
+        $especializacion->delete();
+
+        return response()->json(['mensaje'=>'se ha eliminado la especialidad']);
     }
 }

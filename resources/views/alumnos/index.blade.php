@@ -45,7 +45,8 @@
                         >
 
                         </eliminaralumno>
-                        <a href="" class="btn btn-success"> <i class="far fa-eye"></i></a>
+
+                        <a href="{{route('nota.create', $item->id)}}" class="btn btn-success"><i class="far fa-clipboard"></i></a>
                     </div>
 
                     </td>
@@ -57,3 +58,8 @@
         </tbody>
 
 @endsection
+
+
+
+
+

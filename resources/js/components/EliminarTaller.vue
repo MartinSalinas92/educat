@@ -1,17 +1,14 @@
 <template>
 
+    <button
+        class="btn btn-danger"
+        @click="EliminarTaller"
 
-   <button
 
-   class="btn btn-danger"
-    @click="eliminarAlumnos"
-
-   >
+    >
     <i class="fas fa-times-circle"></i>
 
-
-   </button>
-
+    </button>
 
 
 </template>
@@ -19,16 +16,17 @@
 <script>
 export default {
 
-    props:['eliminaralumno'],
+    props:['eliminartaller'],
+
 
     methods:{
 
 
-        eliminarAlumnos(){
+        EliminarTaller(){
 
-            console.log(this.eliminaralumno);
+            console.log(this.eliminartaller);
 
-            this.$swal.fire({
+             this.$swal.fire({
             title: 'Estas seguro que deseas eliminar?',
             icon: 'warning',
             showCancelButton: true,
@@ -37,48 +35,43 @@ export default {
             confirmButtonText: 'Yes, delete it!'
             }).then(result=>{
 
-                //console.log(result)
+                //console.log(result.value);
 
                 if(result.value){
 
-                    const param= {
-                        id:this.eliminaralumno
 
-                        }
+                    const param={
 
+                        id:this.eliminartaller
 
+                    }
 
-                axios.post(`/alumnos/${this.eliminaralumno}`, {param, _method:'delete'})
+                    axios.post(`/talleres/${this.eliminartaller}`, {param, _method:'delete'})
 
                     .then(res=>{
 
                         console.log(res);
 
-                         this.$swal.fire(
+                             this.$swal.fire(
                                     'Deleted!',
                                     res.data.mensaje
 
                             )
 
-                         this.$el.parentNode.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode.parentNode);
+                            this.$el.parentNode.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode.parentNode);
 
-
-
-                    })
-                    .catch(error=>{
-
-                        console.log(error);
 
                     })
                 }
 
             });
 
-
-
         }
+
     }
 
 
 }
 </script>
+
+

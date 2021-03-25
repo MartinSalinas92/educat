@@ -53,7 +53,28 @@ Route::delete('/alumnos/{alumno}', [App\Http\Controllers\AlumnosController::clas
 Route::get('/talleres', [App\Http\Controllers\TallerController::class, 'index'])->name('talleres.index');
 Route::get('/talleres/create', [App\Http\Controllers\TallerController::class, 'create'])->name('talleres.create');
 Route::post('/talleres',[App\Http\Controllers\TallerController::class, 'store'] )->name('talleres.store');
+Route::get('/talleres/{taller}/edit', [App\Http\Controllers\TallerController::class, 'edit'])->name('talleres.edit');
+Route::put('talleres/{id}', [App\Http\Controllers\TallerController::class, 'update'] )->name('talleres.update');
+Route::delete('/talleres/{taller}', [App\Http\Controllers\TallerController::class, 'destroy'] )->name('talleres.destroy');
 
+//Especificaciones
+Route::get('/especificaciones', [App\Http\Controllers\EspecializacionController::class, 'index'])->name('especificaciones.index');
+Route::get('/especificaciones/create', [App\Http\Controllers\EspecializacionController::class, 'create'])->name('especificaciones.create');
+Route::post('/especialidad', [App\Http\Controllers\EspecializacionController::class, 'store'] )->name('especialidad.store');
+Route::get('/especialidad/{especializacion}/edit', [App\Http\Controllers\EspecializacionController::class, 'edit'])->name('especialidad.edit');
+Route::put('/especialidad/{id}', [App\Http\Controllers\EspecializacionController::class, 'update'])->name('especialidad.update');
+Route::delete('/especialidad/{especializacion}', [App\Http\Controllers\EspecializacionController::class, 'destroy'])->name('especialidad.destroy');
+
+//materias
+Route::get('/materias', [App\Http\Controllers\MateriaController::class, 'index'] )->name('materias.index');
+Route::get('/materias/create', [App\Http\Controllers\MateriaController::class, 'create'] )->name('materias.create');
+Route::post('/materias', [App\Http\Controllers\MateriaController::class, 'store'] )->name('materia.store');
+Route::get('/materias/{materia}/edit', [App\Http\Controllers\MateriaController::class, 'edit'])->name('materia.edit');
+Route::put('/materias/{id}',[App\Http\Controllers\MateriaController::class, 'update'])->name('materia.update');
+Route::delete('/materias/{materia}', [App\Http\Controllers\MateriaController::class, 'destroy'] )->name('materia.destroy');
+
+//Notas
+Route::get('/notas/create/{id}', [App\Http\Controllers\NotaController::class, 'create'] )->name('nota.create');
 
 
 });

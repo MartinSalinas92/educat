@@ -5,6 +5,8 @@
 
 <div class="container my-5" style="font-family: 'Amatic SC', cursive">
 
+    <h1 class="text-center"> Modulos</h1>
+
 
 
 <div class="row">
@@ -57,15 +59,30 @@
 
     </div>
     <div class="col-md-4 mt-5" >
-        <h2>Modulo Notas</h2>
+        <h2>Modulo Especificaciones</h2>
         <div class="card">
 
 
-            <h3 class="card-title text-primary font-weigth-bold"> Notas</h3>
+            <h3 class="card-title text-primary font-weigth-bold"> Especializaciones</h3>
 
 
            <img class="card-img-top" src="storage\docentes\lVDhtS2h0P6L6qXIl7nDT5HmAKmc2QGPKuMo4Rxo.jpg"></img>
-                <a href="" class="btn btn-primary"> Ver Notas</a>
+                <a href="{{route('especificaciones.index')}}" class="btn btn-primary"> Ver Especializaciones</a>
+
+
+        </div>
+
+    </div>
+    <div class="col-md-4 mt-5" >
+        <h2>Modulo Materias</h2>
+        <div class="card">
+
+
+            <h3 class="card-title text-primary font-weigth-bold"> Modulo Materias</h3>
+
+
+           <img class="card-img-top" src="storage\docentes\ipiDU8Fpw9IZMtASYg1RQM3YGvVMPXtqhuqby6xc.jpg"></img>
+                <a href="{{route('materias.index')}}" class="btn btn-primary"> Ver Materias </a>
 
 
         </div>

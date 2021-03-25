@@ -1,34 +1,30 @@
 <template>
 
+    <button
 
-   <button
+    class="btn btn-danger"
+    @click="eliminarEspecialidad"
 
-   class="btn btn-danger"
-    @click="eliminarAlumnos"
-
-   >
+    >
     <i class="fas fa-times-circle"></i>
 
-
-   </button>
-
-
-
+    </button>
 </template>
 
 <script>
 export default {
 
-    props:['eliminaralumno'],
+    props:['eliminaresp'],
+
 
     methods:{
 
+        eliminarEspecialidad(){
 
-        eliminarAlumnos(){
+            console.log(this.eliminaresp);
 
-            console.log(this.eliminaralumno);
 
-            this.$swal.fire({
+             this.$swal.fire({
             title: 'Estas seguro que deseas eliminar?',
             icon: 'warning',
             showCancelButton: true,
@@ -37,37 +33,31 @@ export default {
             confirmButtonText: 'Yes, delete it!'
             }).then(result=>{
 
-                //console.log(result)
+                //console.log(result.value);
 
                 if(result.value){
 
-                    const param= {
-                        id:this.eliminaralumno
 
-                        }
+                    const param={
 
+                        id:this.eliminaresp
 
+                    }
 
-                axios.post(`/alumnos/${this.eliminaralumno}`, {param, _method:'delete'})
+                    axios.post(`/especialidad/${this.eliminaresp}`, {param, _method:'delete'})
 
                     .then(res=>{
 
                         console.log(res);
 
-                         this.$swal.fire(
+                             this.$swal.fire(
                                     'Deleted!',
                                     res.data.mensaje
 
                             )
 
-                         this.$el.parentNode.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode.parentNode);
+                            this.$el.parentNode.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode.parentNode);
 
-
-
-                    })
-                    .catch(error=>{
-
-                        console.log(error);
 
                     })
                 }
@@ -77,7 +67,9 @@ export default {
 
 
         }
+
     }
+
 
 
 }

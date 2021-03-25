@@ -80,7 +80,10 @@ class TallerController extends Controller
      */
     public function edit(Taller $taller)
     {
-        //
+
+            return view('talleres.edit', compact('taller'));
+
+
     }
 
     /**
@@ -90,9 +93,29 @@ class TallerController extends Controller
      * @param  \App\Models\Taller  $taller
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Taller $taller)
+    public function update(Request $request, Taller $taller, $id)
     {
-        //
+
+
+        $data=$request->validate([
+
+            'nombre_taller'=>'required',
+            'año_cursado'=>'required',
+            'año_lectivo'=>'required',
+
+        ]);
+
+        $taller=Taller::find($id);
+        $taller->nombre_taller=$data['nombre_taller'];
+        $taller->año_cursado=$data['año_cursado'];
+        $taller->año_lectivo=$data['año_lectivo'];
+        $taller->save();
+
+
+        return back()->with('estado', 'se ha modificado correctamente');
+
+
+
     }
 
     /**
@@ -104,5 +127,8 @@ class TallerController extends Controller
     public function destroy(Taller $taller)
     {
         //
+        $taller->delete();
+
+        return response()->json(['mensaje'=>'se ha eliminado el taller', $taller->nombre_taller]);
     }
 }
